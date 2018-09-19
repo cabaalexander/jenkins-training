@@ -1,0 +1,5 @@
+- name: "Installing Basic packages"
+  yum: pkg={{ item }} state=installed
+  with_items:
+    - vim
+    - git

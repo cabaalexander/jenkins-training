@@ -1,0 +1,9 @@
+- hosts: all
+  become: true
+  roles:
+    - basic
+
+- hosts: jenkins-training-master
+  become: true
+  roles:
+    - jenkins-master

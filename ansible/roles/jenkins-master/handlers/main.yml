@@ -1,0 +1,14 @@
+- name: install jenkins
+  yum: pkg=jenkins-2.89.4 state=installed
+  notify:
+    - start-jenkins
+
+# shell: rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+- name: curl config files
+  get_url:
+    url: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+
+# - name: start-jenkins
+#   service: name=jenkins state=started enabled=yes
+#   shell: cat /var/lib/jenkins/secrets/initialAdminPassword
