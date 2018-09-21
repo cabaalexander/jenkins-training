@@ -3,3 +3,10 @@
   with_items:
     - git
     - java-1.8.0-openjdk
+  notify:
+    - curl config files
+    - jenkins-ci key
+    - install jenkins
+    - start jenkins
+    - execute cat jenkins secrets
+    - reboot server
