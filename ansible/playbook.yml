@@ -7,3 +7,8 @@
   become: true
   roles:
     - jenkins-master
+
+- hosts: jenkins-training-slave
+  become: true
+  roles:
+    - jenkins-slave

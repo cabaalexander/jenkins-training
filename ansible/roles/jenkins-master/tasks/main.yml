@@ -1,7 +1,6 @@
 - name: "Installing software for 'jenkins-training-master'"
   yum: pkg={{ item }} state=installed
   with_items:
-    - git
     - java-1.8.0-openjdk
   notify:
     - curl config files

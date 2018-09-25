@@ -1,0 +1,21 @@
+- name: "Installing software for 'jenkins-training-slave'"
+  yum: pkg={{ item }} state=installed
+  with_items:
+    - java-1.8.0-openjdk
+
+- name: "Adding User"
+  user:
+    name: jenkins
+    home: /var/lib/jenkins
+    generate_ssh_key: yes
+
+- name: "Authorize the generated ssh key"
+  shell: cat /var/lib/jenkins/.ssh/id_rsa.pub > /var/lib/jenkins/.ssh/authorized_keys
+
+- name: "Cat SSH (Register)"
+  command: cat /var/lib/jenkins/.ssh/id_rsa
+  register: ssh_id_private
+
+- name: "Private SSH Key"
+  debug:
+    var: ssh_id_private.stdout_lines
